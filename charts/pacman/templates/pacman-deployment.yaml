@@ -50,8 +50,14 @@ spec:
               path: /
               port: 8080
           env:
+            {{- if eq .Values.mongodb.architecture "standalone" }}
             - name: MONGO_SERVICE_HOST
               value: {{ .Release.Name }}-mongodb
+            {{- end }}
+            {{- if eq .Values.mongodb.architecture "replicaset" }}
+            - name: MONGO_SERVICE_HOST
+              value: {{ .Release.Name }}-mongodb-0.{{ .Release.Name }}-mongodb-headless,{{ .Release.Name }}-mongodb-1.{{ .Release.Name }}-mongodb-headless
+            {{- end }}
             - name: MONGO_AUTH_USER
               value: root
             - name: MONGO_AUTH_PWD
@@ -67,6 +73,10 @@ spec:
               value: "false"
             - name: MONGO_VALIDATE_SSL
               value: "false"
+            {{- if eq .Values.mongodb.architecture "replicaset" }}
+            - name: MONGO_REPLICA_SET
+              value: "rs0"
+            {{- end }}
             - name: MY_NODE_NAME
               valueFrom:
                 fieldRef:

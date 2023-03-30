@@ -12,6 +12,12 @@ Standard, ClusterIP-based deployment:
 helm install pacman pacman/pacman -n pacman --create-namespace
 ```
 
+Highly available MongoDB deployment:
+```
+helm install pacman pacman/pacman -n pacman --create-namespace \
+    --set mongodb.architecture=replicaset
+```
+
 ## Other access mode available:
 
 Ingress (you need to have one. Adapt the class/host to your environment):

@@ -12,6 +12,8 @@ pacman:
 
 mongodb:
   enabled: true
+  architecture: standalone
+    # Change to architecture: replicaset to deploy with a HA MongoDB deployment
 
 ## Service configuration.
 service:
