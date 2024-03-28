@@ -26,6 +26,14 @@ jobs:
       - name: Check out code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
 
+      # Extract chart version from the chart's metadata
+      # https://github.com/mikefarah/yq
+      - name: Get Helm chart version
+        id: get_chart_version
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq '.version' charts/pacman/Chart.yaml
+
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
@@ -35,12 +43,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=schedule
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
             type=sha
+            type=raw,value=${{ steps.get_chart_version.outputs.result }}
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
 
       # This action can be useful if you want to add emulation
