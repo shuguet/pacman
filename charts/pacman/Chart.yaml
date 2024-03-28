@@ -1,6 +1,6 @@
 apiVersion: v2
-version: 0.1.14
-appVersion: "0.1.14"
+version: 0.1.15
+appVersion: "0.1.15"
 name: pacman
 description: Pac-Man Demo App for Kubernetes
 home: https://github.com/shuguet/pacman
@@ -21,6 +21,6 @@ maintainers:
 
 dependencies:
 - name: mongodb
-  version: 14.10.1
+  version: 15.1.0
   repository: https://charts.bitnami.com/bitnami
   condition: mongodb.enabled
