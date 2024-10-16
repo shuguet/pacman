@@ -1,6 +1,6 @@
 apiVersion: v2
-version: 0.1.15
-appVersion: "0.1.15"
+version: 0.1.16
+appVersion: "0.1.16"
 name: pacman
 description: Pac-Man Demo App for Kubernetes
 home: https://github.com/shuguet/pacman
