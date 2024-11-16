@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+    # Publish `vX.Y.Z` tags as releases.
+    tags:
+      - v*
 jobs:
   release:
     runs-on: ubuntu-latest
