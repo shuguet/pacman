@@ -2,6 +2,35 @@ apiVersion: v1
 entries:
   pacman:
   - apiVersion: v2
+    appVersion: 0.1.19
+    created: "2024-12-06T09:48:22.935634965Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.1.0
+    description: Pac-Man Demo App for Kubernetes
+    digest: 1491c1b361be01574cd3598135363bc381493a3bb334965739b0c5db42e7752c
+    home: https://github.com/shuguet/pacman
+    icon: https://shuguet.github.io/pacman/icon.png
+    maintainers:
+    - name: Dean Lewis
+      url: https://veducate.co.uk
+    - name: Davis Phillips
+      url: https://github.com/dav1x/
+    - name: Michael Cade
+      url: https://vzilla.co.uk/
+    - name: Sylvain Huguet
+      url: https://www.huguet.me
+    - name: Michael Courcy
+      url: https://github.com/michaelcourcy
+    name: pacman
+    sources:
+    - https://github.com/shuguet/pacman
+    urls:
+    - https://github.com/shuguet/pacman/releases/download/pacman-0.1.19/pacman-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
     appVersion: 0.1.18
     created: "2024-12-06T09:34:26.117078608Z"
     dependencies:
@@ -417,4 +446,4 @@ entries:
     urls:
     - https://github.com/shuguet/pacman/releases/download/pacman-0.1.0/pacman-0.1.0.tgz
     version: 0.1.0
-generated: "2024-12-06T09:34:26.117184727Z"
+generated: "2024-12-06T09:48:22.935746314Z"
