@@ -1,6 +1,6 @@
 {
   "name": "pacman",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Pac-Man Node.js Game, based on work from Ivan Font <ivan@ivanfont.com> & Platzh1rsch <http://platzh1rsch.ch/>",
   "author": "Sylvain Huguet <sylvain@huguet.me>",
   "main": "bin/server.js",

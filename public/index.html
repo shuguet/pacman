@@ -118,49 +118,56 @@
         <h1>Instructions</h1>
         <div class="nomobile">
             <h2>Controls</h2>
-            <p>Use your arrow keys or [W,A,S,D] keys to navigate pacman.</p>
+            <p>Use your arrow keys or [W,A,S,D] keys to navigate Pac-Man.</p>
             <p>To pause / resume the game press [SPACE] or [ESC] or just click into the game area.</p>
         </div>
         <div class="mobile">
             <h2>Controls</h2>
-            <p>Use swipe gestures to navigate pacman.</p>
-            <p>Alternatively use the Arrow Buttons underneath the game area to navigate pacman.</p>
+            <p>Use swipe gestures to navigate Pac-Man.</p>
+            <p>Alternatively use the arrow buttons underneath the game area to navigate Pac-Man.</p>
             <p>To pause / resume the game, touch the game area once.</p>
+        </div>
+
+        <div>
+            <h2>Map</h2>
+            <p>The maze is shaped like the name K10, in reference to Veeam Kasten for Kubernetes&apos; original software name. There is no ghost house: all four ghosts spawn on the middle row and roam the map freely from the very first tick.</p>
+            <p>The left and right edges are connected by a tunnel &mdash; exit one side and you reappear on the other. The top and bottom edges are not connected for ghosts, so they treat those rows as boundaries when choosing their path.</p>
         </div>
 
         <div>
             <h2>Ghosts</h2>
             <p>Ghosts are creatures that hunt pacman and will kill him if they catch him.</p>
-            <p>Every ghost has its own strategy to chase down pacman.</p>
-            <h3>Inky<img src="img/inky.svg" class="pull-right"></h3>
-            Inky will stay in the ghost house until pacman has eaten at least 30 pills.    His home is the bottom right corner.
+            <p>All four ghosts are active from the start of every level. Each one has its own targeting rule, and each one has a different &ldquo;home&rdquo; corner it retreats to during scatter mode.</p>
             <h3>Blinky <img src="img/blinky.svg" class="pull-right"></h3>
-            Blinky is the most agressive of the 4 ghosts. He will start chasing pacman right away, and aim directly at him. His home is the upper right corner.
+            Blinky is the most aggressive of the four. In chase mode he aims directly at Pac-Man&apos;s current cell. His scatter home is the upper right corner.
             <h3>Pinky<img src="img/pinky.svg" class="pull-right"></h3>
-            Pinky will start chasing pacman right away, he will always aim 4 fields ahead and 4 fields left of pacman. His home is the upper left corner.
+            Pinky tries to ambush Pac-Man: in chase mode he aims four cells ahead of Pac-Man&apos;s current facing direction. His scatter home is the upper left corner.
+            <h3>Inky<img src="img/inky.svg" class="pull-right"></h3>
+            Inky&apos;s target is computed from Blinky&apos;s position and Pac-Man&apos;s heading, which makes his path hard to predict. His scatter home is the lower right corner.
             <h3>Clyde<img src="img/clyde.svg" class="pull-right"></h3>
-            Inky will stay in the ghost house until pacman has eaten at least 2/3 of all pills. His home is the bottom left corner.
+            Clyde chases Pac-Man directly, but bails out and heads back to his scatter corner whenever he gets closer than five cells &mdash; so he tends to weave in and out of the action. His scatter home is the lower left corner.
         </div>
 
         <div>
-            <h2>Ghost moods</h2>
-            The ghosts have two different moods that change the way they act during the game.
-            <h3>Scatter mood</h3>
-            <p>This is the default mood. When ghosts are in scatter mood, they will just go to their home corner and stay there.</p>
-            <img src="img/instructions/instructions_scatter.PNG">
-            <h3>Chase mood</h3>
-            <p>After a certain time the ghosts change their mood and want to go chasing pacman. This is indicated through the walls turning red.</p>
-            <img src="img/instructions/instructions_chase.PNG">
+            <h2>Ghost modes</h2>
+            The ghosts alternate between two modes on a timer during the level.
+            <h3>Scatter mode</h3>
+            <p>Every ghost heads toward its own home corner. Because all four corners are different, the ghosts spread across the map.</p>
+            <img src="img/instructions/instructions_scatter.svg">
+            <h3>Chase mode</h3>
+            <p>After a short scatter period the ghosts switch to chase mode and pursue Pac-Man using each ghost&apos;s individual targeting rule. This is indicated by the walls turning red. Chase lasts noticeably longer than scatter, so most of each level is spent being hunted.</p>
+            <img src="img/instructions/instructions_chase.svg">
+            <p>Ghosts navigate by computing the shortest path to their current target through the actual maze, so they cannot get stuck in dead-end pockets and will find their way around walls rather than oscillating in place.</p>
         </div>
 
         <div>
             <h2>Items</h2>
             <h3>Pills</h3>
-            <p>The goal of every level is, to eat all the white pills without getting catched by the ghosts. One pill results in 10 points.</p>
+            <p>The goal of every level is to eat all the white pills without getting caught by the ghosts. One pill is worth 10 points.</p>
             <h3>Powerpills</h3>
-            <p>In every level there are 4 powerpills, which are a bit bigger than the regular ones. If Pac-Man eats those, he will get strong enough to eat the ghosts. You can see this indicated by the ghosts turning blue. One powerpill results in 50 points.</p>
-            <img src="img/instructions/instructions_powerpill.PNG">
-            <p>Eating a ghost results in 100 points. The soul of the ghost will return to the ghost house before starting to chase Pac-Man again.</p>
+            <p>In every level there are 4 powerpills, which are a bit bigger than the regular ones. If Pac-Man eats one, he becomes strong enough to eat the ghosts for a short time &mdash; the ghosts turn blue to signal this. One powerpill is worth 50 points.</p>
+            <img src="img/instructions/instructions_powerpill.svg">
+            <p>Eating a blue ghost is worth 100 points. Its eyes then travel back to its spawn cell, where it respawns and resumes the hunt.</p>
         </div>
 
     </div>
@@ -171,11 +178,11 @@
     <div class="button" id="back">&lt; back</div>
     <div>
         <h1>Info</h1>
-        <p>Current Version: 1.02 (05.02.2018)</p>
+        <p>Current Version: 2.0.0 (22.04.2026)</p>
         <img src="img/platzh1rsch-logo.png">
         <p>Pac-Man is Open Source, originally written by <a href="http://platzh1rsch.ch">platzh1rsch</a> and modified by <a href="http://ivanfont.com">Ivan Font</a>. You can get the original code <a target="_blank" href="https://github.com/platzhersh/pacman-canvas">here</a> or this modified version <a target="_blank" href="https://github.com/font/pacman">here</a>.</p>
+        <p>This version has been updated by Sylvain Huguet for the Kasten team &mdash; the maze is now shaped like "K10" (Veeam Kasten for Kubernetes' original software name), the ghost house has been removed, and ghost navigation uses true shortest-path routing so every ghost keeps hunting instead of getting stuck in dead-ends.</p>
         <p>If you have any suggestions how to make this app better, please file an issue on the github repo.</p>
-        <p>
     </div>
 </div>
 
