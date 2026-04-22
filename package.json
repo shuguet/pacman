@@ -13,12 +13,20 @@
   "dependencies": {
     "ip": "^2.0.1",
     "cross-spawn": "^7.0.5",
-    "body-parser": "^1.17.1",
-    "express": "^4.21.2",
+    "body-parser": "^1.20.4",
+    "express": "^4.22.1",
     "mongodb": "^4.17.0",
     "pug": "^3.0.3"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
+  },
+  "overrides": {
+    "fast-xml-parser": "5.5.8",
+    "picomatch": "2.3.2",
+    "minimatch": "3.1.5",
+    "path-to-regexp": "0.1.13",
+    "brace-expansion": "^1.1.12",
+    "@smithy/config-resolver": "^4.4.5"
   }
 }
