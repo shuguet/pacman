@@ -1,14 +1,9 @@
 name: Docker Image CI
 
+# Builds on PRs and nightly; no push to registry on either.
+# Push-to-main releases are handled by release.yaml.
 on:
   pull_request:
-  push:
-    branches:
-      - main
-
-    # Publish `vX.Y.Z` tags as releases.
-    tags:
-      - v* 
   schedule:
     - cron: "0 2 * * 1-5"
 
@@ -26,16 +21,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
 
-      # Extract chart version from the chart's metadata
-      # https://github.com/mikefarah/yq
-      - name: Get Helm chart version
-        id: get_chart_version
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq '.version' charts/pacman/Chart.yaml
-
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81 # v5.5.1
@@ -44,8 +29,6 @@ jobs:
           tags: |
             type=schedule
             type=sha
-            type=raw,value=${{ steps.get_chart_version.outputs.result }},enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
 
       # This action can be useful if you want to add emulation
       # support with QEMU to be able to build against more platforms.
