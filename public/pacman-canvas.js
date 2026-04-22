@@ -210,6 +210,60 @@ function geronimo() {
         return x >= min && x <= max;
     }
 
+    // Returns the orthogonal neighbors of a cell used for ghost pathfinding.
+    // Horizontal edges wrap (classic tunnel); vertical edges do not, so ghosts
+    // never treat the top/bottom wrap as a routing shortcut.
+    function pathNeighbors(x, y, W, H) {
+        var nbrs = [[(x+1)%W, y], [((x-1)+W)%W, y]];
+        if (y + 1 < H) nbrs.push([x, y+1]);
+        if (y - 1 >= 0) nbrs.push([x, y-1]);
+        return nbrs;
+    }
+
+    // Shortest-path distance from (sX, sY) to every cell via BFS, respecting
+    // walls. Returns Infinity for unreachable cells. If the source cell itself
+    // is a wall (e.g., an off-map scatter target), BFS is seeded from its open
+    // neighbors at distance 1.
+    function bfsFromCell(sX, sY) {
+        var W = game.width / 30;
+        var H = game.height / 30;
+        var dist = new Array(H);
+        for (var y = 0; y < H; y++) {
+            dist[y] = new Array(W);
+            for (var x = 0; x < W; x++) dist[y][x] = Infinity;
+        }
+        var sx = ((Math.round(sX) % W) + W) % W;
+        var sy = Math.max(0, Math.min(H - 1, Math.round(sY)));
+        var queue = [];
+        if (game.map.posY[sy].posX[sx].type !== "wall") {
+            dist[sy][sx] = 0;
+            queue.push([sx, sy]);
+        } else {
+            var seeds = pathNeighbors(sx, sy, W, H);
+            for (var i = 0; i < seeds.length; i++) {
+                var nx = seeds[i][0], ny = seeds[i][1];
+                if (game.map.posY[ny].posX[nx].type !== "wall") {
+                    dist[ny][nx] = 1;
+                    queue.push([nx, ny]);
+                }
+            }
+        }
+        var head = 0;
+        while (head < queue.length) {
+            var cell = queue[head++];
+            var x = cell[0], y = cell[1], d = dist[y][x];
+            var nbrs = pathNeighbors(x, y, W, H);
+            for (var i = 0; i < nbrs.length; i++) {
+                var nx = nbrs[i][0], ny = nbrs[i][1];
+                if (dist[ny][nx] !== Infinity) continue;
+                if (game.map.posY[ny].posX[nx].type === "wall") continue;
+                dist[ny][nx] = d + 1;
+                queue.push([nx, ny]);
+            }
+        }
+        return dist;
+    }
+
     // Logger
     var logger = function() {
         var oldConsoleLog = null;
@@ -369,7 +423,7 @@ function geronimo() {
             }
             // always decrement ghostMode timer
             this.ghostModeTimer--;
-            if (this.ghostModeTimer === 0 && game.level > 1) {
+            if (this.ghostModeTimer === 0) {
                 this.ghostMode ^= 1;
                 this.ghostModeTimer = 200 + this.ghostMode * 450;
                 console.log("ghostMode=" + this.ghostMode);
@@ -560,10 +614,10 @@ function geronimo() {
 
             // initalize Ghosts, avoid memory flooding
             if (pinky === null || pinky === undefined) {
-                pinky = new Ghost("pinky",7,5,'img/pinky.svg',2,2);
-                inky = new Ghost("inky",8,5,'img/inky.svg',13,11);
-                blinky = new Ghost("blinky",9,5,'img/blinky.svg',13,0);
-                clyde = new Ghost("clyde",10,5,'img/clyde.svg',2,11);
+                pinky = new Ghost("pinky",3,6,'img/pinky.svg',2,2);
+                inky = new Ghost("inky",8,6,'img/inky.svg',13,11);
+                blinky = new Ghost("blinky",11,6,'img/blinky.svg',13,0);
+                clyde = new Ghost("clyde",14,6,'img/clyde.svg',2,11);
             }
             else {
                 //console.log("ghosts reset");
@@ -572,7 +626,7 @@ function geronimo() {
                 blinky.reset();
                 clyde.reset();
             }
-            blinky.start();    // blinky is the first to leave ghostHouse
+            blinky.start();
             inky.start();
             pinky.start();
             clyde.start();
@@ -607,65 +661,96 @@ function geronimo() {
             context_walls.fillStyle = game.wallColor;
             context_walls.strokeStyle = game.wallColor;
 
+            //buildWall(context_walls,startX,startY,length,height);
+
+            // K
+            buildWall(context_walls,1,1,1,11);
+            buildWall(context_walls,2,5,1,2);
+            buildWall(context_walls,3,4,1,1);
+            buildWall(context_walls,3,7,1,1);
+            buildWall(context_walls,4,3,1,1);
+            buildWall(context_walls,4,8,1,2);
+            buildWall(context_walls,5,1,1,2);
+            buildWall(context_walls,5,10,1,2);
+
+            // 1
+            buildWall(context_walls,6,4,1,1);
+            buildWall(context_walls,7,3,1,1);
+            buildWall(context_walls,8,2,1,1);
+            buildWall(context_walls,9,1,1,11);
+
+            // 0
+            buildWall(context_walls,11,4,1,2);
+            buildWall(context_walls,11,7,1,2);
+            buildWall(context_walls,12,2,1,2);
+            buildWall(context_walls,12,9,1,2);
+            buildWall(context_walls,13,1,2,1);
+            buildWall(context_walls,13,11,2,1);
+            buildWall(context_walls,15,2,1,2);
+            buildWall(context_walls,15,9,1,2);
+            buildWall(context_walls,16,4,1,2);
+            buildWall(context_walls,16,7,1,2);
+
+
             //horizontal outer
-            buildWall(context_walls,0,0,18,1);
-            buildWall(context_walls,0,12,18,1);
+            // buildWall(context_walls,0,0,18,1);
+            // buildWall(context_walls,0,12,18,1);
 
             // vertical outer
-            buildWall(context_walls,0,0,1,6);
-            buildWall(context_walls,0,7,1,6);
-            buildWall(context_walls,17,0,1,6);
-            buildWall(context_walls,17,7,1,6);
+            // buildWall(context_walls,0,0,1,6);
+            // buildWall(context_walls,0,7,1,6);
+            // buildWall(context_walls,17,0,1,6);
+            // buildWall(context_walls,17,7,1,6);
 
             // ghost base
-            buildWall(context_walls,7,4,1,1);
-            buildWall(context_walls,6,5,1,2);
-            buildWall(context_walls,10,4,1,1);
-            buildWall(context_walls,11,5,1,2);
-            buildWall(context_walls,6,6,6,1);
+            // buildWall(context_walls,7,4,1,1);
+            // buildWall(context_walls,6,5,1,2);
+            // buildWall(context_walls,10,4,1,1);
+            // buildWall(context_walls,11,5,1,2);
+            // buildWall(context_walls,6,6,6,1);
 
             // ghost base door
-            context_walls.fillRect(8*2*pacman.radius,pacman.radius/2+4*2*pacman.radius+5, 4*pacman.radius, 1);
+            // context_walls.fillRect(8*2*pacman.radius,pacman.radius/2+4*2*pacman.radius+5, 4*pacman.radius, 1);
 
             // single blocks
-            buildWall(context_walls,4,0,1,2);
-            buildWall(context_walls,13,0,1,2);
+            // buildWall(context_walls,4,0,1,2);
+            // buildWall(context_walls,13,0,1,2);
 
-            buildWall(context_walls,2,2,1,2);
-            buildWall(context_walls,6,2,2,1);
-            buildWall(context_walls,15,2,1,2);
-            buildWall(context_walls,10,2,2,1);
+            // buildWall(context_walls,2,2,1,2);
+            // buildWall(context_walls,6,2,2,1);
+            // buildWall(context_walls,15,2,1,2);
+            // buildWall(context_walls,10,2,2,1);
 
-            buildWall(context_walls,2,3,2,1);
-            buildWall(context_walls,14,3,2,1);
-            buildWall(context_walls,5,3,1,1);
-            buildWall(context_walls,12,3,1,1);
-            buildWall(context_walls,3,3,1,3);
-            buildWall(context_walls,14,3,1,3);
+            // buildWall(context_walls,2,3,2,1);
+            // buildWall(context_walls,14,3,2,1);
+            // buildWall(context_walls,5,3,1,1);
+            // buildWall(context_walls,12,3,1,1);
+            // buildWall(context_walls,3,3,1,3);
+            // buildWall(context_walls,14,3,1,3);
 
-            buildWall(context_walls,3,4,1,1);
-            buildWall(context_walls,14,4,1,1);
+            // buildWall(context_walls,3,4,1,1);
+            // buildWall(context_walls,14,4,1,1);
 
-            buildWall(context_walls,0,5,2,1);
-            buildWall(context_walls,3,5,2,1);
-            buildWall(context_walls,16,5,2,1);
-            buildWall(context_walls,13,5,2,1);
+            // buildWall(context_walls,0,5,2,1);
+            // buildWall(context_walls,3,5,2,1);
+            // buildWall(context_walls,16,5,2,1);
+            // buildWall(context_walls,13,5,2,1);
 
-            buildWall(context_walls,0,7,2,2);
-            buildWall(context_walls,16,7,2,2);
-            buildWall(context_walls,3,7,2,2);
-            buildWall(context_walls,13,7,2,2);
+            // buildWall(context_walls,0,7,2,2);
+            // buildWall(context_walls,16,7,2,2);
+            // buildWall(context_walls,3,7,2,2);
+            // buildWall(context_walls,13,7,2,2);
 
-            buildWall(context_walls,4,8,2,2);
-            buildWall(context_walls,12,8,2,2);
-            buildWall(context_walls,5,8,3,1);
-            buildWall(context_walls,10,8,3,1);
+            // buildWall(context_walls,4,8,2,2);
+            // buildWall(context_walls,12,8,2,2);
+            // buildWall(context_walls,5,8,3,1);
+            // buildWall(context_walls,10,8,3,1);
 
-            buildWall(context_walls,2,10,1,1);
-            buildWall(context_walls,15,10,1,1);
-            buildWall(context_walls,7,10,4,1);
-            buildWall(context_walls,4,11,2,2);
-            buildWall(context_walls,12,11,2,2);
+            // buildWall(context_walls,2,10,1,1);
+            // buildWall(context_walls,15,10,1,1);
+            // buildWall(context_walls,7,10,4,1);
+            // buildWall(context_walls,4,11,2,2);
+            // buildWall(context_walls,12,11,2,2);
             /* ------------ End Pre-Build Walls  ------------ */
         };
 
@@ -770,7 +855,6 @@ function geronimo() {
             );
         this.image = new Image();
         this.image.src = image;
-        this.ghostHouse = true;
         this.dazzled = false;
         this.dead = false;
         this.dazzle = function() {
@@ -820,7 +904,6 @@ function geronimo() {
             this.dead = false;
             this.posX = this.startPosX;
             this.posY = this.startPosY;
-            this.ghostHouse = true;
             this.undazzle();
         }
 
@@ -844,41 +927,16 @@ function geronimo() {
             this.checkDirectionChange();
             this.checkCollision();
 
-            // leave Ghost House
-            if (this.ghostHouse == true) {
-
-                // Clyde does not start chasing before 2/3 of all pills are eaten and if level is < 4
-                if (this.name == "clyde") {
-                    if ((game.level < 4) || ((game.pillCount > 104/3))) this.stop = true;
-                    else this.stop = false;
-                }
-                // Inky starts after 30 pills and only from the third level on
-                if (this.name == "inky") {
-                    if ((game.level < 3) || ((game.pillCount > 104-30))) this.stop = true;
-                    else this.stop = false;
-                }
-
-                if ((this.getGridPosY() == 5) && this.inGrid()) {
-                    if ((this.getGridPosX() == 7)) this.setDirection(right);
-                    if ((this.getGridPosX() == 8) || this.getGridPosX() == 9) this.setDirection(up);
-                    if ((this.getGridPosX() == 10)) this.setDirection(left);
-                }
-                if ((this.getGridPosY() == 4) && ((this.getGridPosX() == 8) || (this.getGridPosX() == 9)) && this.inGrid()) {
-                    console.log("ghosthouse -> false");
-                    this.ghostHouse = false;
-                    }
-            }
-
             if (!this.stop) {
             // Move
                 this.posX += this.speed * this.dirX;
                 this.posY += this.speed * this.dirY;
 
-                // Check if out of canvas
-                if (this.posX >= game.width-this.radius) this.posX = this.speed-this.radius;
-                if (this.posX <= 0-this.radius) this.posX = game.width-this.speed-this.radius;
-                if (this.posY >= game.height-this.radius) this.posY = this.speed-this.radius;
-                if (this.posY <= 0-this.radius) this.posY = game.height-this.speed-this.radius;
+                // Wrap around the edges of the canvas, landing on a grid-aligned cell
+                if (this.posX >= game.width-this.radius) this.posX = 0;
+                if (this.posX <= 0-this.radius) this.posX = game.width - 2*this.radius;
+                if (this.posY >= game.height-this.radius) this.posY = 0;
+                if (this.posY <= 0-this.radius) this.posY = game.height - 2*this.radius;
             }
         }
 
@@ -964,52 +1022,40 @@ function geronimo() {
             }
 
 
-            var oppDir = this.getOppositeDirection();    // ghosts are not allowed to change direction 180°
-
-            var dirs = [{},{},{},{}];
-            dirs[0].field = game.getMapContent(pX,pY-1);
-            dirs[0].dir = up;
-            dirs[0].distance = Math.sqrt(Math.pow((pX-tX),2) + Math.pow((pY -1 - tY),2));
-
-            dirs[1].field = game.getMapContent(pX,pY+1);
-            dirs[1].dir = down;
-            dirs[1].distance = Math.sqrt(Math.pow((pX-tX),2) + Math.pow((pY+1 - tY),2));
-
-            dirs[2].field = game.getMapContent(pX+1,pY);
-            dirs[2].dir = right;
-            dirs[2].distance = Math.sqrt(Math.pow((pX+1-tX),2) + Math.pow((pY - tY),2));
-
-            dirs[3].field = game.getMapContent(pX-1,pY);
-            dirs[3].dir = left;
-            dirs[3].distance = Math.sqrt(Math.pow((pX-1-tX),2) + Math.pow((pY - tY),2));
-
-            // Sort possible directions by distance
-            function compare(a,b) {
-              if (a.distance < b.distance)
-                 return -1;
-              if (a.distance > b.distance)
-                return 1;
-              return 0;
-            }
-            var dirs2 = dirs.sort(compare);
-
-            var r = this.dir;
-            var j;
-
-            if (this.dead) {
-                for (var i = dirs2.length-1; i >= 0; i--) {
-                    if ((dirs2[i].field != "wall") && !(dirs2[i].dir.equals(this.getOppositeDirection()))) {
-                    r = dirs2[i].dir;
-                    }
+            // Pick the neighbor with shortest map-graph distance to the target,
+            // using BFS so dead-end pockets are correctly penalized and ghosts
+            // don't get stuck circling local minima of Euclidean distance.
+            var W = game.width / 30, H = game.height / 30;
+            var distGrid = bfsFromCell(tX, tY);
+            var oppositeDir = this.getOppositeDirection();
+            var candidates = [up, down, right, left];
+            var best = null;
+            var bestDist = Infinity;
+            for (var i = 0; i < candidates.length; i++) {
+                var dir = candidates[i];
+                if (dir.equals(oppositeDir)) continue;
+                var ny = pY + dir.dirY;
+                if (ny < 0 || ny >= H) continue;              // no vertical wrap
+                var nx = ((pX + dir.dirX) % W + W) % W;       // horizontal wraps
+                if (game.map.posY[ny].posX[nx].type === "wall") continue;
+                var d = distGrid[ny][nx];
+                if (d < bestDist) {
+                    bestDist = d;
+                    best = dir;
                 }
             }
-            else {
-                for (var i = dirs2.length-1; i >= 0; i--) {
-                    if ((dirs2[i].field != "wall") && (dirs2[i].field != "door") && !(dirs2[i].dir.equals(this.getOppositeDirection()))) {
-                        r = dirs2[i].dir;
-                        }
+
+            // Only happens if the ghost is wedged with its only open neighbor being
+            // behind it (true dead-end corridor); allow reversal to escape.
+            if (best === null) {
+                var ny = pY + oppositeDir.dirY;
+                if (ny >= 0 && ny < H) {
+                    var nx = ((pX + oppositeDir.dirX) % W + W) % W;
+                    if (game.map.posY[ny].posX[nx].type !== "wall") best = oppositeDir;
                 }
             }
+
+            var r = best || this.direction;
             this.directionWatcher.set(r);
             return r;
         }
@@ -1190,7 +1236,7 @@ function geronimo() {
                 }
 
                 /*    Check Wall Collision            */
-                if ((fieldAhead === "wall") || (fieldAhead === "door")) {
+                if (fieldAhead === "wall") {
                     this.stuckX = this.dirX;
                     this.stuckY = this.dirY;
                     pacman.stop();
@@ -1279,11 +1325,11 @@ function geronimo() {
                 this.posX += this.speed * this.dirX;
                 this.posY += this.speed * this.dirY;
 
-                // Check if out of canvas
-                if (this.posX >= game.width-this.radius) this.posX = 5-this.radius;
-                if (this.posX <= 0-this.radius) this.posX = game.width-5-this.radius;
-                if (this.posY >= game.height-this.radius) this.posY = 5-this.radius;
-                if (this.posY <= 0-this.radius) this.posY = game.height-5-this.radius;
+                // Wrap around the edges of the canvas, landing on a grid-aligned cell
+                if (this.posX >= game.width-this.radius) this.posX = 0;
+                if (this.posX <= 0-this.radius) this.posX = game.width - 2*this.radius;
+                if (this.posY >= game.height-this.radius) this.posY = 0;
+                if (this.posY <= 0-this.radius) this.posY = game.height - 2*this.radius;
             }
             else this.dieAnimation();
         }

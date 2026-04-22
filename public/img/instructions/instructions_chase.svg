@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="390" viewBox="0 0 540 390">
+  <rect width="540" height="390" fill="#000000"/>
+  <g fill="#D10000">
+    <rect x="37.5" y="37.5" width="15" height="315" rx="4" ry="4"/>
+    <rect x="67.5" y="157.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="97.5" y="127.5" width="15" height="15" rx="4" ry="4"/>
+    <rect x="97.5" y="217.5" width="15" height="15" rx="4" ry="4"/>
+    <rect x="127.5" y="97.5" width="15" height="15" rx="4" ry="4"/>
+    <rect x="127.5" y="247.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="157.5" y="37.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="157.5" y="307.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="187.5" y="127.5" width="15" height="15" rx="4" ry="4"/>
+    <rect x="217.5" y="97.5" width="15" height="15" rx="4" ry="4"/>
+    <rect x="247.5" y="67.5" width="15" height="15" rx="4" ry="4"/>
+    <rect x="277.5" y="37.5" width="15" height="315" rx="4" ry="4"/>
+    <rect x="337.5" y="127.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="337.5" y="217.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="367.5" y="67.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="367.5" y="277.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="397.5" y="37.5" width="45" height="15" rx="4" ry="4"/>
+    <rect x="397.5" y="337.5" width="45" height="15" rx="4" ry="4"/>
+    <rect x="457.5" y="67.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="457.5" y="277.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="487.5" y="127.5" width="15" height="45" rx="4" ry="4"/>
+    <rect x="487.5" y="217.5" width="15" height="45" rx="4" ry="4"/>
+  </g>
+  <g>
+    <circle cx="15" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="45" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="285" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="15" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="45" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="75" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="105" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="135" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="165" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="195" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="225" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="255" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="285" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="315" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="345" r="2" fill="#FFCCA8"/>
+    <circle cx="15" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="45" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="75" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="105" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="135" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="165" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="195" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="225" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="255" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="285" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="315" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="345" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="375" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="405" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="435" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="465" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="495" cy="375" r="2" fill="#FFCCA8"/>
+    <circle cx="525" cy="375" r="2" fill="#FFCCA8"/>
+  </g>
+  <g>
+    <circle cx="255" cy="105" r="6" fill="#FFCCA8"/>
+    <circle cx="495" cy="105" r="6" fill="#FFCCA8"/>
+    <circle cx="75" cy="135" r="6" fill="#FFCCA8"/>
+    <circle cx="75" cy="225" r="6" fill="#FFCCA8"/>
+  </g>
+  
+    <g transform="translate(315 195)">
+      <path d="
+        M -12 2
+        A 12 12 0 0 1 12 2
+        L 12 10
+        L 8 12 L 4 10 L 0 12 L -4 10 L -8 12 L -12 10 Z"
+        fill="#D71921"/>
+      <circle cx="-5" cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="5"  cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="-5" cy="-1" r="1.5" fill="#1A1AC4"/>
+      <circle cx="5"  cy="-1" r="1.5" fill="#1A1AC4"/>
+    </g>
+    <g transform="translate(105 105)">
+      <path d="
+        M -12 2
+        A 12 12 0 0 1 12 2
+        L 12 10
+        L 8 12 L 4 10 L 0 12 L -4 10 L -8 12 L -12 10 Z"
+        fill="#FFB8FF"/>
+      <circle cx="-5" cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="5"  cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="-5" cy="-1" r="1.5" fill="#1A1AC4"/>
+      <circle cx="5"  cy="-1" r="1.5" fill="#1A1AC4"/>
+    </g>
+    <g transform="translate(255 15)">
+      <path d="
+        M -12 2
+        A 12 12 0 0 1 12 2
+        L 12 10
+        L 8 12 L 4 10 L 0 12 L -4 10 L -8 12 L -12 10 Z"
+        fill="#00DEDE"/>
+      <circle cx="-5" cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="5"  cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="-5" cy="-1" r="1.5" fill="#1A1AC4"/>
+      <circle cx="5"  cy="-1" r="1.5" fill="#1A1AC4"/>
+    </g>
+    <g transform="translate(255 345)">
+      <path d="
+        M -12 2
+        A 12 12 0 0 1 12 2
+        L 12 10
+        L 8 12 L 4 10 L 0 12 L -4 10 L -8 12 L -12 10 Z"
+        fill="#FF8C00"/>
+      <circle cx="-5" cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="5"  cy="-2" r="3.2" fill="#FFFFFF"/>
+      <circle cx="-5" cy="-1" r="1.5" fill="#1A1AC4"/>
+      <circle cx="5"  cy="-1" r="1.5" fill="#1A1AC4"/>
+    </g>
+  
+    <g transform="translate(255 195)">
+      <path d="M 0 0 L 12 -6 A 13 13 0 1 1 12 6 Z" fill="#FFE600"/>
+    </g>
+</svg>
