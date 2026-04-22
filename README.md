@@ -69,3 +69,4 @@ docker push <registry>/<user>/pacman
 #### Helm Chart
 Explore [charts/pacman](charts/pacman) to understand how the chart is built.
 To host your own, you will need to setup a [Helm Repository](https://helm.sh/docs/topics/chart_repository/)
+<!-- test: verify-version-bump should fail -->
